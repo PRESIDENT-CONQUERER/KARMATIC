@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat&display=swap');
+
+:root {
+  --royal-blue: #1D2D50;
+  --amethyst-purple: #6A0572;
+  --burnished-gold: #D4AF37;
+  --soft-neutral: #F5F5F7;
+  --panel-bg: rgba(255 255 255 / 0.12);
+  --panel-border: rgba(212,175,55,.4);
+}
+
+body {
+  margin: 0; padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--royal-blue), var(--amethyst-purple));
+  font-family: 'Montserrat', sans-serif;
+  color: var(--soft-neutral);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Subtle luxury geometric background overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background:
+    repeating-radial-gradient(circle at center, transparent 0, transparent 70px, var(--burnished-gold) 71px, var(--burnished-gold) 72px);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#app-container {
+  position: relative;
+  z-index: 10;
+  background: var(--panel-bg);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  width: 640px;
+  max-width: 90vw;
+  box-shadow:
+    0 4px 30px rgba(255 255 255, 0.1),
+    0 0 15px var(--burnished-gold);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--panel-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin: 0 0 1rem 0;
+  color: var(--burnished-gold);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  user-select: none;
+}
+
+#chakra-symbol {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid var(--burnished-gold);
+  position: relative;
+  box-shadow: 0 0 8px var(--burnished-gold);
+}
+#chakra-symbol::before, #chakra-symbol::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 2px; height: 28px;
+  background: var(--burnished-gold);
+  transform-origin: center;
+  box-shadow: 0 0 4px var(--burnished-gold);
+}
+#chakra-symbol::before {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+#chakra-symbol::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#tip {
+  font-size: 1.4rem;
+  text-align: center;
+  margin: 1.5rem 0 2rem 0;
+  min-height: 70px;
+  user-select: none;
+}
+
+#controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  background: transparent;
+  border: 2px solid var(--burnished-gold);
+  border-radius: 12px;
+  color: var(--burnished-gold);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.65rem 1.7rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  user-select: none;
+}
+button:hover, button:focus {
+  background: var(--burnished-gold);
+  color: var(--royal-blue);
+  box-shadow:
+    0 0 12px var(--burnished-gold),
+    0 0 20px var(--burnished-gold);
+  outline: none;
+}
+button:active {
+  transform: scale(0.96);
+}
+
+#moodButton {
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  user-select: none;
+}
+
+#karmaCount {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--burnished-gold);
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+#bioFeedback {
+  background: var(--panel-bg);
+  border-radius: 16px;
+  border: 1.3px solid var(--panel-border);
+  padding: 1rem 1.5rem;
+  margin-top: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: var(--burnished-gold);
+  box-shadow:
+    inset 0 0 10px rgba(255 215 0 / 0.3);
+  width: 320px;
+}
+#bioFeedback div {
+  margin-bottom: 0.5rem;
+}
+
+#consciousnessWrapper {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  user-select: none;
+}
+label[for="consciousnessBar"] {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--burnished-gold);
+}
+#consciousnessBar {
+  width: 100%;
+  height: 20px;
+  appearance: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #222222 0%, #555555 100%);
+  overflow: hidden;
+  margin-top: 6px;
+}
+#consciousnessBar::-webkit-progress-bar {
+  background: transparent;
+  border-radius: 12px;
+}
+#consciousnessBar::-webkit-progress-value {
+  background: linear-gradient(90deg, var(--royal-blue), var(--burnished-gold));
+  border-radius: 12px;
+  box-shadow: 0 0 8px var(--burnished-gold);
+  transition: width 0.3s ease;
+}
+#consciousnessBar::-moz-progress-bar {
+  background: linear-gradient(90deg, var(--royal-blue), var(--burnished-gold));
+  border-radius: 12px;
+  transition: width 0.3s ease;
+}
+
+#threejs-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+@media (max-width: 700px) {
+  #app-container {
+    width: 95vw;
+    padding: 1.5rem 2rem;
+  }
+}
